@@ -1,0 +1,116 @@
+ body {
+            background-color: #f4f6f9;
+            min-height: 100vh;
+        }
+
+        /* Header */
+
+        header {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            font-weight: 600;
+        }
+
+
+        /* Calculator */
+
+        .calculator-card {
+            max-width: 550px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+
+        /* Form */
+
+        .form-label {
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        .form-control,
+        .form-select {
+            margin-top: 5px;
+            padding: 11px;
+            border-radius: 8px;
+        }
+
+
+        /* Button */
+
+        .calculate-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+
+
+        /* Result */
+
+        #result {
+            margin-top: 30px;
+            display: none;
+        }
+
+
+        /* Result Cards */
+
+        .result-card {
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            height: 100%;
+        }
+
+        .result-card h6 {
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+
+        .result-card h3 {
+            font-weight: 700;
+            margin: 0;
+        }
+
+
+        /* Progress */
+
+        .progress-container {
+            margin-top: 25px;
+        }
+
+        .progress {
+            height: 25px;
+            border-radius: 20px;
+        }
+
+        .progress-bar {
+            font-weight: 600;
+        }
+
+
+        /* Status */
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+        }
