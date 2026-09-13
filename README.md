@@ -21,9 +21,6 @@ CSS
 JavaScript
 Bootstrap
 
-## Screenshots
-
-[images]
 
 ## Future Improvements
 
