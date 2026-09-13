@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -208,6 +207,71 @@
                 <div id="status" class="status">
 
                 </div>
+
+                <!-- WHAT IF CALCULATOR -->
+
+<div class="what-if">
+
+    <h4>🔮 What If?</h4>
+
+    <p>
+        See what your attendance will become if you attend or miss
+        future lectures.
+    </p>
+
+    <div class="row g-3">
+
+        <div class="col-6">
+
+            <label class="form-label">
+                Future Attended
+            </label>
+
+            <input
+                type="number"
+                id="futureAttended"
+                class="form-control"
+                placeholder="0"
+                min="0"
+            >
+
+        </div>
+
+        <div class="col-6">
+
+            <label class="form-label">
+                Future Absent
+            </label>
+
+            <input
+                type="number"
+                id="futureAbsent"
+                class="form-control"
+                placeholder="0"
+                min="0"
+            >
+
+        </div>
+
+    </div>
+
+    <button
+        type="button"
+        id="whatIfBtn"
+        class="btn btn-outline-light w-100 mt-3">
+
+        Calculate What If
+
+    </button>
+
+
+    <div
+        id="whatIfResult"
+        class="what-if-result">
+
+    </div>
+
+</div>
 
 
             </div>
@@ -444,6 +508,162 @@
         });
 
     </script>
+
+    <script>
+
+    const whatIfBtn = document.getElementById("whatIfBtn");
+
+    whatIfBtn.addEventListener("click", function () {
+
+        const total =
+            Number(document.getElementById("totlectures").value);
+
+        const absent =
+            Number(document.getElementById("absent").value);
+
+        const futureAttended =
+            Number(document.getElementById("futureAttended").value);
+
+        const futureAbsent =
+            Number(document.getElementById("futureAbsent").value);
+
+        const required =
+            Number(document.getElementById("required").value);
+
+        const whatIfResult =
+            document.getElementById("whatIfResult");
+
+
+        /* Validation */
+
+        if (total <= 0) {
+
+            whatIfResult.style.display = "block";
+
+            whatIfResult.innerHTML =
+                "First calculate your current attendance.";
+
+            return;
+        }
+
+
+        if (futureAttended < 0 || futureAbsent < 0) {
+
+            whatIfResult.style.display = "block";
+
+            whatIfResult.innerHTML =
+                "Please enter valid numbers.";
+
+            return;
+        }
+
+
+        /* Current attendance */
+
+        const currentAttended =
+            total - absent;
+
+
+        /* Future situation */
+
+        const newAttended =
+            currentAttended + futureAttended;
+
+
+        const newTotal =
+            total + futureAttended + futureAbsent;
+
+
+        /* New percentage */
+
+        const newPercentage =
+            (newAttended / newTotal) * 100;
+
+
+        whatIfResult.style.display = "block";
+
+
+        /* Result */
+
+        if (newPercentage >= required) {
+
+            whatIfResult.innerHTML = `
+
+                <h5>
+                    📈 Projected Attendance
+                </h5>
+
+                <h2>
+                    ${newPercentage.toFixed(2)}%
+                </h2>
+
+                <p class="mb-0">
+
+                    After attending
+                    <strong>${futureAttended}</strong>
+                    lecture(s)
+
+                    and missing
+                    <strong>${futureAbsent}</strong>
+                    lecture(s),
+
+                    your attendance will be
+
+                    <strong>${newPercentage.toFixed(2)}%</strong>.
+
+                </p>
+
+                <div class="alert alert-success mt-3 mb-0">
+
+                    ✓ You will remain above
+                    ${required}% attendance.
+
+                </div>
+
+            `;
+
+        } else {
+
+            whatIfResult.innerHTML = `
+
+                <h5>
+                    📉 Projected Attendance
+                </h5>
+
+                <h2>
+                    ${newPercentage.toFixed(2)}%
+                </h2>
+
+                <p class="mb-0">
+
+                    After attending
+                    <strong>${futureAttended}</strong>
+                    lecture(s)
+
+                    and missing
+                    <strong>${futureAbsent}</strong>
+                    lecture(s),
+
+                    your attendance will be
+
+                    <strong>${newPercentage.toFixed(2)}%</strong>.
+
+                </p>
+
+                <div class="alert alert-danger mt-3 mb-0">
+
+                    ⚠ You will fall below
+                    ${required}% attendance.
+
+                </div>
+
+            `;
+
+        }
+
+    });
+
+</script>
 
 </body>
 
